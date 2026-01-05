@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Yappachino",
-  description: "Developed by Achyut2009",
+  description: "Developed by Achyut2009. Checout github repo",
 };
 
 export default function RootLayout({
