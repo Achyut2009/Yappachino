@@ -5,7 +5,7 @@ export default function Home(){
     <div className="flex flex-col items-center justify-center min-h-screen bg-white dark:bg-black">
       <h1 className="text-2xl font-bold text-black dark:text-white">Welcome to MyWay guys!!!</h1>
       <h1 className="text-2xl font-bold text-black dark:text-white">Welcome to MyWay guyzzs!!!</h1>
-      <p className="mt-4 text-gray-600 dark:text-gray-300">Your journey starts from here!!!</p>
+      <p className="mt-4 text-gray-600 dark:text-gray-300">Your journey starts from here!!</p>
     </div>
   );
 }
