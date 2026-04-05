@@ -1,0 +1,75 @@
+{
+  "version": "1.0",
+  "project": {
+    "name": "Yappachino",
+    "repository": "https://github.com/Achyut2009/Yappachino.git",
+    "provider": "GITHUB",
+    "branch": "main"
+  },
+  "stack": {
+    "language": "TypeScript",
+    "framework": "Next.js",
+    "packageManager": "npm",
+    "hasDocker": false,
+    "hasTests": false,
+    "buildCommand": "npm run build",
+    "testCommand": "npm test"
+  },
+  "pipeline": {
+    "stages": [
+      {
+        "id": "install",
+        "type": "BUILD",
+        "name": "Install Dependencies",
+        "command": "npm install",
+        "dependsOn": []
+      },
+      {
+        "id": "lint",
+        "type": "LINT",
+        "name": "Lint Code",
+        "command": "npm run lint",
+        "dependsOn": [
+          "install"
+        ]
+      },
+      {
+        "id": "test",
+        "type": "TEST",
+        "name": "Unit Tests",
+        "command": "npm test",
+        "dependsOn": [
+          "install"
+        ]
+      },
+      {
+        "id": "build",
+        "type": "BUILD",
+        "name": "Build",
+        "command": "npm run build",
+        "dependsOn": [
+          "lint",
+          "test"
+        ]
+      },
+      {
+        "id": "scan",
+        "type": "SECURITY_SCAN",
+        "name": "Security Scan",
+        "command": "trivy fs .",
+        "dependsOn": [
+          "build"
+        ]
+      }
+    ]
+  },
+  "environments": [
+    "Development",
+    "Staging",
+    "Production"
+  ],
+  "ai": {
+    "autoFix": true,
+    "riskThreshold": 60
+  }
+}
